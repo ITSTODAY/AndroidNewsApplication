@@ -1,0 +1,154 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/d4c97488df1e63805b8404aef05e9655/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/0ca7b2bcd0d3c39513d27c34b3efcbd4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.fragment:fragment:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/6cd6e1478d3e5984a2733d649bca8688/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/666843145a7a104965ca650162b5e57b/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/dc9661e3b4070d1b1c88587aef2d3872/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/9de45cf26011dd9196ac6209936e74ef/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/dacdfc11ad0a9177d923810d09060496/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/c6c702294de0709476c6d83bb1a6a916/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/24f18bdb5b1de1302913f76654ead016/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/6bb1f1d7abc553e5927947f30ba9e8d2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/15826709d623adecf32783f1d2593ad6/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/429650aa4727415a4ecc2c9b3eb3aef9/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/af1cfda43e57d7af584eebb0db0b1ae1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/e925d60e125f2e1916679ef72e2dac74/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/28389860963a8cf16ebc81f5a9e21dff/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.0.1] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/607e165119396ac1ff0588f2de342f84/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/1f62e9b4bf6db5685bd1af49d4cb5f26/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/efe941f4afda6147a0b77ed01062a087/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/8d86b5609230b09dff09fe763d1934d7/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/ff9af604645e6472050258d85a395a4d/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/2b50a9dfed2e31aa9e7a7b8268deabfe/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/2bff329cb37ba4a91d15d08610f1c855/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/06154b4835f08741d3243b41f542ee6f/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/10e2be908b58c5f7cdd2345edbb168ad/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/65c82ad1a3118935a385406e3f60a2a0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/c5d6728ce8d0150fd1b1b17c6a2a66f5/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/6dc22b4f85ae8b4b6ce428e93243e3b2/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:3:5-42
+		INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:5:5-19:19
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/0ca7b2bcd0d3c39513d27c34b3efcbd4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/0ca7b2bcd0d3c39513d27c34b3efcbd4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.core:core:1.0.1] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/607e165119396ac1ff0588f2de342f84/AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.1] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/607e165119396ac1ff0588f2de342f84/AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/1f62e9b4bf6db5685bd1af49d4cb5f26/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/1f62e9b4bf6db5685bd1af49d4cb5f26/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.0.1] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/607e165119396ac1ff0588f2de342f84/AndroidManifest.xml:22:18-86
+	android:supportsRtl
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:11:9-40
+activity#com.example.newsapplication.MainActivity
+ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:12:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/d4c97488df1e63805b8404aef05e9655/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/d4c97488df1e63805b8404aef05e9655/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/0ca7b2bcd0d3c39513d27c34b3efcbd4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/0ca7b2bcd0d3c39513d27c34b3efcbd4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.fragment:fragment:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/6cd6e1478d3e5984a2733d649bca8688/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/6cd6e1478d3e5984a2733d649bca8688/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/666843145a7a104965ca650162b5e57b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/666843145a7a104965ca650162b5e57b/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/dc9661e3b4070d1b1c88587aef2d3872/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/dc9661e3b4070d1b1c88587aef2d3872/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/9de45cf26011dd9196ac6209936e74ef/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/9de45cf26011dd9196ac6209936e74ef/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/dacdfc11ad0a9177d923810d09060496/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/dacdfc11ad0a9177d923810d09060496/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/c6c702294de0709476c6d83bb1a6a916/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/c6c702294de0709476c6d83bb1a6a916/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/24f18bdb5b1de1302913f76654ead016/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/24f18bdb5b1de1302913f76654ead016/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/6bb1f1d7abc553e5927947f30ba9e8d2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/6bb1f1d7abc553e5927947f30ba9e8d2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/15826709d623adecf32783f1d2593ad6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/15826709d623adecf32783f1d2593ad6/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/429650aa4727415a4ecc2c9b3eb3aef9/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/429650aa4727415a4ecc2c9b3eb3aef9/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/af1cfda43e57d7af584eebb0db0b1ae1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/af1cfda43e57d7af584eebb0db0b1ae1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/e925d60e125f2e1916679ef72e2dac74/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/e925d60e125f2e1916679ef72e2dac74/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/28389860963a8cf16ebc81f5a9e21dff/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/28389860963a8cf16ebc81f5a9e21dff/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.1] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/607e165119396ac1ff0588f2de342f84/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.1] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/607e165119396ac1ff0588f2de342f84/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/1f62e9b4bf6db5685bd1af49d4cb5f26/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/1f62e9b4bf6db5685bd1af49d4cb5f26/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/efe941f4afda6147a0b77ed01062a087/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/efe941f4afda6147a0b77ed01062a087/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/8d86b5609230b09dff09fe763d1934d7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/8d86b5609230b09dff09fe763d1934d7/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/ff9af604645e6472050258d85a395a4d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/ff9af604645e6472050258d85a395a4d/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/2b50a9dfed2e31aa9e7a7b8268deabfe/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/2b50a9dfed2e31aa9e7a7b8268deabfe/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/2bff329cb37ba4a91d15d08610f1c855/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/2bff329cb37ba4a91d15d08610f1c855/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/06154b4835f08741d3243b41f542ee6f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/06154b4835f08741d3243b41f542ee6f/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/10e2be908b58c5f7cdd2345edbb168ad/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/10e2be908b58c5f7cdd2345edbb168ad/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/65c82ad1a3118935a385406e3f60a2a0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/65c82ad1a3118935a385406e3f60a2a0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/c5d6728ce8d0150fd1b1b17c6a2a66f5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/c5d6728ce8d0150fd1b1b17c6a2a66f5/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/6dc22b4f85ae8b4b6ce428e93243e3b2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/matianyi/.gradle/caches/transforms-2/files-2.1/6dc22b4f85ae8b4b6ce428e93243e3b2/AndroidManifest.xml:20:5-44
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+		ADDED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/matianyi/AndroidStudioProjects/NewsApplication/app/src/main/AndroidManifest.xml
