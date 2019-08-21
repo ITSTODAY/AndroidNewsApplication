@@ -1,0 +1,154 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/matianyi/AndroidStudioProjects/NewsApp3/mainLayout/build/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/mainLayout/src/main/res/values/ids.xml",
+                    "from": {
+                        "startLines": "3,5,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "56,133,95",
+                        "endColumns": "38,40,37",
+                        "endOffsets": "90,169,128"
+                    },
+                    "to": {
+                        "startLines": "7,8,9",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "350,388,428",
+                        "endColumns": "37,39,36",
+                        "endOffsets": "383,423,460"
+                    }
+                },
+                {
+                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/mainLayout/src/main/res/values/pull_refresh_strings.xml",
+                    "from": {
+                        "startLines": "8,10,9,3,5,4",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "390,600,492,56,206,128",
+                        "endColumns": "101,113,107,71,69,77",
+                        "endOffsets": "487,709,595,123,271,201"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13,14,15",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "465,567,681,789,861,931",
+                        "endColumns": "101,113,107,71,69,77",
+                        "endOffsets": "562,676,784,856,926,1004"
+                    }
+                },
+                {
+                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/mainLayout/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "6,7,4,5,3",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "223,287,111,166,56",
+                        "endColumns": "63,63,54,56,54",
+                        "endOffsets": "282,346,161,218,106"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,119,183,238,295",
+                        "endColumns": "63,63,54,56,54",
+                        "endOffsets": "114,178,233,290,345"
+                    }
+                },
+                {
+                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/mainLayout/src/main/res/values/attrs.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "56",
+                        "endLines": "77",
+                        "endColumns": "24",
+                        "endOffsets": "3595"
+                    },
+                    "to": {
+                        "startLines": "16",
+                        "startColumns": "4",
+                        "startOffsets": "1009",
+                        "endLines": "90",
+                        "endColumns": "24",
+                        "endOffsets": "4522"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/matianyi/AndroidStudioProjects/NewsApp3/mainLayout/build/intermediates/res/merged/release/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/mainLayout/src/main/res/values/ids.xml",
+                    "from": {
+                        "startLines": "3,5,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "56,133,95",
+                        "endColumns": "38,40,37",
+                        "endOffsets": "90,169,128"
+                    },
+                    "to": {
+                        "startLines": "7,8,9",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "350,388,428",
+                        "endColumns": "37,39,36",
+                        "endOffsets": "383,423,460"
+                    }
+                },
+                {
+                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/mainLayout/src/main/res/values/pull_refresh_strings.xml",
+                    "from": {
+                        "startLines": "8,10,9,3,5,4",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "390,600,492,56,206,128",
+                        "endColumns": "101,113,107,71,69,77",
+                        "endOffsets": "487,709,595,123,271,201"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13,14,15",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "465,567,681,789,861,931",
+                        "endColumns": "101,113,107,71,69,77",
+                        "endOffsets": "562,676,784,856,926,1004"
+                    }
+                },
+                {
+                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/mainLayout/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "6,7,4,5,3",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "223,287,111,166,56",
+                        "endColumns": "63,63,54,56,54",
+                        "endOffsets": "282,346,161,218,106"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,119,183,238,295",
+                        "endColumns": "63,63,54,56,54",
+                        "endOffsets": "114,178,233,290,345"
+                    }
+                },
+                {
+                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/mainLayout/src/main/res/values/attrs.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "56",
+                        "endLines": "77",
+                        "endColumns": "24",
+                        "endOffsets": "3595"
+                    },
+                    "to": {
+                        "startLines": "16",
+                        "startColumns": "4",
+                        "startOffsets": "1009",
+                        "endLines": "90",
+                        "endColumns": "24",
+                        "endOffsets": "4522"
+                    }
+                }
+            ]
+        }
+    ]
+}

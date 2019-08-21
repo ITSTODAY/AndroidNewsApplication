@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/matianyi/AndroidStudioProjects/NewsApp3/library/build/intermediates/res/merged/release/values-ja/values-ja.xml",
+            "map": [
+                {
+                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/library/src/main/res/values-ja/pull_refresh_strings.xml",
+                    "from": {
+                        "startLines": "2,4,3",
+                        "startColumns": "2,2,2",
+                        "startOffsets": "55,185,119",
+                        "endColumns": "62,65,64",
+                        "endOffsets": "115,248,181"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,120,188",
+                        "endColumns": "64,67,66",
+                        "endOffsets": "115,183,250"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/matianyi/AndroidStudioProjects/NewsApp3/library/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-ja/values-ja.xml",
+            "map": [
+                {
+                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/library/src/main/res/values-ja/pull_refresh_strings.xml",
+                    "from": {
+                        "startLines": "2,4,3",
+                        "startColumns": "2,2,2",
+                        "startOffsets": "55,185,119",
+                        "endColumns": "62,65,64",
+                        "endOffsets": "115,248,181"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,120,188",
+                        "endColumns": "64,67,66",
+                        "endOffsets": "115,183,250"
+                    }
+                }
+            ]
+        }
+    ]
+}

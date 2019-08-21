@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/matianyi/AndroidStudioProjects/NewsApp3/library/build/intermediates/res/merged/release/drawable/indicator_bg_top.xml",
+        "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/library/src/main/res/drawable/indicator_bg_top.xml"
+    },
+    {
+        "merged": "/Users/matianyi/AndroidStudioProjects/NewsApp3/library/build/intermediates/res/merged/release/drawable/indicator_bg_bottom.xml",
+        "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/library/src/main/res/drawable/indicator_bg_bottom.xml"
+    }
+]
