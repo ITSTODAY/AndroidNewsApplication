@@ -1,9 +1,11 @@
 package com.example.newsapp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -12,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 class Keyword{
     public double score;
@@ -50,6 +53,35 @@ class News{
     public ArrayList<Keyword> where;
     public ArrayList<Keyword> who;
     public String category;
+
+    @JsonIgnore
+    private static ObjectMapper objectMapper;
+
+    public boolean save(){
+        ObjectMapper mapper = new ObjectMapper();
+        try{
+            File file = new File(newsID);
+            mapper.writeValue(file, this);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public News(){
+    }
+
+    public static News Json2News(String fileName){
+        try{
+            File file=new File(fileName);
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(file, News.class);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }
 
 class Request{
@@ -59,6 +91,17 @@ class Request{
     public String words;
     public String categories;
     static public SimpleDateFormat DateForm = new SimpleDateFormat("yyyy-MM-dd");
+
+    public Request(){
+
+    }
+    public Request(int size, Date startDate, Date endDate, String words, String categories){
+        this.size=size;
+        this.startDate=startDate;
+        this.endDate=endDate;
+        this.words=words;
+        this.categories=categories;
+    }
     public String getUrl(){
         String url="https://api2.newsminer.net/svc/news/queryNewsList?";
         if(size!=0){
@@ -101,9 +144,16 @@ class Request{
 public class NewsCollection {
     public String pageSize;
     public int total;
-    public ArrayList<News> data;
+    public List<News> data;
     public String currentPage;
 
+    public NewsCollection(){
+    }
+
+    public NewsCollection(List<News> news){
+        data=news;
+        total=news.size();
+    }
     public static NewsCollection Json2News(String json){
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);

@@ -6,7 +6,7 @@ public class Record extends SugarRecord<Record> {
 
     public User User;
 
-    public String type; //shield/preference, favorite,/browse
+    public String type; //block/preference, favorite,/browse
 
     public String newsID; //keyword
 
