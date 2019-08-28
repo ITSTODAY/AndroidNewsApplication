@@ -67,7 +67,7 @@ public class Myservice extends Service {
             return true;
         }
         public boolean SignIn(User user1){
-            List<User> users = User.find(User.class, "userID = ? and password = ?",user1.userID,user1.password);
+            List<User> users = User.find(User.class, "user_ID = ? and password = ?",user1.userID,user1.password);
             if(users.isEmpty()||users.size()>1)return false;
             user=users.get(0);
             System.out.println("Sign in successfully.");

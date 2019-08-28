@@ -113,10 +113,10 @@ class Request{
         if(endDate!=null){
             url+="endDate="+DateForm.format(endDate)+"&";
         }
-        if(words!=""){
+        if(words!=null&&!words.equals("")){
             url+="words="+words+"&";
         }
-        if(categories!=""){
+        if(categories!=null&&!categories.equals("")){
             url+="categories="+categories+"&";
         }
         url=url.substring(0,url.length()-1);
@@ -166,28 +166,22 @@ public class NewsCollection {
         return null;
     }
     public static NewsCollection Request2News(Request request){
+        MyThread myThread = new MyThread(request.getUrl(),1);
+        myThread.run();
         try {
-            URL url= new URL(request.getUrl());
-            InputStreamReader is = new InputStreamReader(url.openStream(), StandardCharsets.UTF_8);
-            BufferedReader br = new BufferedReader(is);
-
-            StringBuffer buffer = new StringBuffer();
-            String res;
-            while((res=br.readLine())!=null){
-                buffer.append(res);
-            }
-
-            NewsCollection newsCollection = Json2News(buffer.toString());
-            return newsCollection;
-        }catch (Exception e){
-            System.out.println(e.getClass());
+            myThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        return null;
+        return myThread.newsCollection;
     }
     public static void main(String[] args){
         Request request = new Request();
-        request.categories="教育";
-        request.words="清华";
+        //request.categories="经济";
+        request.words="特朗普";
+        request.endDate=new Date();
+        NewsCollection newsCollection = Request2News(request);
+        System.out.println(newsCollection.total);
 
     }
 }
