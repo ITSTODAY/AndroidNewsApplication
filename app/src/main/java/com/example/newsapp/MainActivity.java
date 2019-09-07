@@ -1,10 +1,19 @@
 package com.example.newsapp;
 
+import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.view.menu.MenuView;
 import android.text.format.DateUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,6 +24,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -29,39 +40,43 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
 
 
-
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private PullToRefreshListView mPullRefreshListView;
-    //普通的listview对象
-    private ListView actualListView;
-    //添加一个链表数组，来存放string数组，这样就可以动态增加string数组中的内容了
-    private LinkedList<String> mListItems;
-    //给listview添加一个普通的适配器
-    private ArrayAdapter<String> mAdapter;
 
-    //一个可以下拉刷新的listView对象
+
+    private ViewPager my_viewpager;
+    private TabLayout my_tab;
+    private List<Fragment> fragments;
+    private List<String> titles;
+    private MyAdapter mAdapter;
+    private Context mContext;
+    private String user = null;
+    private MenuItem nowLogin;
+    private Toolbar myToolbar;
+    private int ID = -1;
+    private int tag = 0;
+    private String[] myCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FileHelper.fileHelper = new FileHelper(getApplicationContext());
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
 
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -69,12 +84,42 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext,SearchActivity.class);
+                intent.putExtra("ID",ID);
+                startActivity(intent);
+            }
+        });
 
-        initView();
-        mPullRefreshListView.setRefreshing(true);
+        nowLogin = (MenuItem) navigationView.getCheckedItem();
+
+        this.mContext = MainActivity.this;
+        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+        intent.putExtra("first",1);
+        startActivityForResult(intent,1);
     }
 
+    private void initViewTab(){
+        my_tab=(TabLayout) findViewById(R.id.my_tab);
+        my_viewpager=(ViewPager) findViewById(R.id.my_viewpager);
+        fragments=new ArrayList<>();       //碎片的集合
+        fragments.add(new Page().setType("主页").setUp(mContext).setUser(ID));
+        for(String cate:myCategory){
+            fragments.add(new Page().setType(cate).setUp(mContext).setUser(ID));
+        }
+        titles=new ArrayList<>();
+        titles.add("主页");//标题的集合
+        for(String title:myCategory){
+            titles.add(title);
+        }
 
+        MyAdapter adapter=new MyAdapter(getSupportFragmentManager(),fragments, titles);
+        my_viewpager.setAdapter(adapter);
+        my_tab.setupWithViewPager(my_viewpager);
+
+    }
 
     @Override
     public void onBackPressed() {
@@ -100,33 +145,50 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+    public boolean onNavigationItemSelected(MenuItem item) { // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-            startService(new Intent(getBaseContext(), Myservice.class));
-        } else if (id == R.id.nav_gallery) {
-            stopService(new Intent(getBaseContext(), Myservice.class));
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        item.setChecked(false);
+        if (id == R.id.LogIn) {
+            if(this.user!=null){
+                Toast.makeText(mContext,"你已经登陆了，亲爱的"+this.user,Toast.LENGTH_LONG);
+            }else {
+                nowLogin = item;
+                Intent intent = new Intent(mContext, LoginActivity.class);
+                intent.putExtra("first",0);
+                startActivityForResult(intent, 1);
+            }
+        }else if(id == R.id.DailyNew){
+            TabLayout tlo = (TabLayout)findViewById(R.id.my_tab);
+            tlo.getTabAt(0).select();
+        }else if(id == R.id.History){
+            //System.out.println("dss");
+            Intent intent = new Intent(MainActivity.this,HistoryActivity.class);
+            intent.putExtra("ID",this.ID);
+            intent.putExtra("isForYou",0);
+            startActivity(intent);
+        }else if(id == R.id.ForYou){
+            Intent intent = new Intent(MainActivity.this,HistoryActivity.class);
+            intent.putExtra("ID",this.ID);
+            intent.putExtra("isForYou",1);
+            startActivity(intent);
+        }else if(id == R.id.Collection){
+            Intent intent = new Intent(MainActivity.this,HistoryActivity.class);
+            intent.putExtra("ID",this.ID);
+            intent.putExtra("isForYou",130);
+            startActivity(intent);
+        }else if(id == R.id.Setting){
+            Intent intent = new Intent(MainActivity.this,SettingActivity.class);
+            intent.putExtra("ID",this.ID);
+            startActivityForResult(intent,1);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -134,76 +196,55 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==10086){
+            User usr = new User();
+            usr.setID(ID);
+            myCategory = usr.GetCategory();
+            //ChangeIt();
+            initViewTab();
+            return;
+        }
+        if(resultCode==1998&&tag==0){
+            try{
+                tag=1;
+                String result = data.getExtras().getString("result");
+                this.user = result;
+                String Hello = "Hello, "+this.user+"!";
+                Toast.makeText(mContext, Hello, Toast.LENGTH_LONG).show();
+                this.ID = data.getExtras().getInt("ID");
+                System.out.println("dsdsdsdsdsdsdsds" + this.ID);
+                //tag = 1;
+                User usr = new User();
+                usr.setID(ID);
+                myCategory = usr.GetCategory();
+                initViewTab();
+                nowLogin.setTitle(Hello);
+                Intent intent = new Intent(mContext,Myservice.class);
+                startService(intent);
+                return;
+            }catch(Exception e){return;}
+        }
+        if(resultCode==1998){
+            try{
+                String result = data.getExtras().getString("result");
+                this.user = result;
+                String Hello = "Hello, "+this.user+"!";
+                nowLogin.setTitle(Hello);
+                myToolbar = findViewById(R.id.toolbar);
+                myToolbar.setTitle("Daily News For "+user);
+                Toast.makeText(mContext, Hello, Toast.LENGTH_LONG).show();
+                this.ID = data.getExtras().getInt("ID");
+                User usr = new User();
+                usr.setID(ID);
+                myCategory = usr.GetCategory();
+                initViewTab();
+            }catch(Exception e){}
+        }
 
-
-
-    private void initView() {
-        initPTRListView();
-        initListView();
     }
 
-    /**
-     * 设置下拉刷新的listview的动作
-     */
-    private void initPTRListView() {
-        mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.pullToRefresh);
-        //设置拉动监听器
-        mPullRefreshListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
-
-            @Override
-            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                //设置下拉时显示的日期和时间
-                String label = DateUtils.formatDateTime(getApplicationContext(), System.currentTimeMillis(),
-                        DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
-
-                // 更新显示的label
-                refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
-                // 开始执行异步任务，传入适配器来进行数据改变
-                //new GetDataTask(mPullRefreshListView, mAdapter,mListItems).execute();
-            }
-        });
-
-        // 添加滑动到底部的监听器
-        mPullRefreshListView.setOnLastItemVisibleListener(new OnLastItemVisibleListener() {
-
-            @Override
-            public void onLastItemVisible() {
-                Toast.makeText(getApplication(), "已经到底了", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //mPullRefreshListView.isScrollingWhileRefreshingEnabled();//看刷新时是否允许滑动
-        //在刷新时允许继续滑动
-        mPullRefreshListView.setScrollingWhileRefreshingEnabled(true);
-        //mPullRefreshListView.getMode();//得到模式
-        //上下都可以刷新的模式。这里有两个选择：Mode.PULL_FROM_START，Mode.BOTH，PULL_FROM_END
-        mPullRefreshListView.setMode(Mode.BOTH);
-
-        /**
-         * 设置反馈音效
-         */
-        SoundPullEventListener<ListView> soundListener = new SoundPullEventListener<ListView>(this);
-        //soundListener.addSoundEvent(State.PULL_TO_REFRESH, R.raw.pull_event);
-        //soundListener.addSoundEvent(State.RESET, R.raw.reset_sound);
-        //soundListener.addSoundEvent(State.REFRESHING, R.raw.refreshing_sound);
-        mPullRefreshListView.setOnPullEventListener(soundListener);
-    }
-
-    /**
-     * 设置listview的适配器
-     */
-    private void initListView() {
-        //通过getRefreshableView()来得到一个listview对象
-        actualListView = mPullRefreshListView.getRefreshableView();
-
-        String []data = new String[] {"android","ios","wp","java","c++","c#"};
-        mListItems = new LinkedList<String>();
-        //把string数组中的string添加到链表中
-        mListItems.addAll(Arrays.asList(data));
-
-        mAdapter = new ArrayAdapter<>(getApplicationContext(),
-                android.R.layout.simple_list_item_1, mListItems);
-        actualListView.setAdapter(mAdapter);
-    }
 
 }

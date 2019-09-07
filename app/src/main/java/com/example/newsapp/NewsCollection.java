@@ -1,5 +1,7 @@
 package com.example.newsapp;
 
+import android.content.Context;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,16 +13,27 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-class Keyword{
+class Keyword implements Comparable{
     public double score;
     public String word;
+    @Override
+    public int compareTo(Object o) {
+        return Double.compare(score, ((Keyword) o).score);
+    }
 }
-
+class KeywordComparetor implements Comparator {
+    @Override
+    public int compare(Object arg0, Object arg1) {
+        return Double.compare(((Keyword)arg1).score,((Keyword)arg0).score);
+    }
+}
 class Person{
     public int count;
     public String linkedURL;
@@ -38,6 +51,8 @@ class Location{
 class News{
     public String image;
     public String publishTime;
+    @JsonIgnore
+    public Date publishDate;
     public ArrayList<Keyword> keywords;
     public String language;
     public String video;
@@ -57,11 +72,17 @@ class News{
     @JsonIgnore
     private static ObjectMapper objectMapper;
 
-    public boolean save(){
+    @JsonIgnore
+    private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
+
+    public boolean save(Integer username){
+        if(username==null)username=0;
         ObjectMapper mapper = new ObjectMapper();
         try{
-            File file = new File(newsID);
-            mapper.writeValue(file, this);
+            String json=mapper.writeValueAsString(this);
+            FileHelper.fileHelper.save(username+"-"+newsID,json);
+//            File file = new File(username+"/"+newsID);
+//            mapper.writeValue(file, this);
         }catch (Exception e){
             System.out.println(e.getMessage());
             return false;
@@ -71,12 +92,28 @@ class News{
 
     public News(){
     }
-
-    public static News Json2News(String fileName){
+    public boolean upload(Integer username){
+        if(username==null)username=0;
         try{
-            File file=new File(fileName);
+            FileThread fileThread = new FileThread();
+            fileThread.fileName=username+"-"+newsID;
+            fileThread.start();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+    public static News Json2News(String fileName,Integer username){
+        if(username==null)username=0;
+        try{
             ObjectMapper mapper = new ObjectMapper();
-            return mapper.readValue(file, News.class);
+            String json = FileHelper.fileHelper.read(username+"-"+fileName);
+            News news = mapper.readValue(json,News.class);
+//            File file=new File(username+"/"+fileName);
+//            News news = mapper.readValue(file, News.class);
+            news.publishDate = dateFormat.parse(news.publishTime);
+            return news;
         }catch (Exception e){
             System.out.println(e.getMessage());
             return null;
@@ -114,30 +151,31 @@ class Request{
             url+="endDate="+DateForm.format(endDate)+"&";
         }
         if(words!=null&&!words.equals("")){
+            words = words.replaceAll(" |,","+");
             url+="words="+words+"&";
         }
         if(categories!=null&&!categories.equals("")){
             url+="categories="+categories+"&";
         }
         url=url.substring(0,url.length()-1);
-        System.out.println(url);
-        int index = url.indexOf("?");
-        String result = url.substring(0,index+1);
-        String temp = url.substring(index+1);
-        try {
-            //URLEncode转码会将& ： / = 等一些特殊字符转码,(但是这个字符  只有在作为参数值  时需要转码;例如url中的&具有参数连接的作用，此时就不能被转码)
-            String encode = URLEncoder.encode(temp, "utf-8");
-            System.out.println(encode);
-            encode = encode.replace("%3D",  "=");
-            encode = encode.replace("%2F", "/");
-            encode = encode.replace("+", "%20");
-            encode = encode.replace("%26", "&");
-            result += encode;
-            //System.out.println("转码后的url:"+result);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return result;
+//        System.out.println(url);
+//        int index = url.indexOf("?");
+//        String result = url.substring(0,index+1);
+//        String temp = url.substring(index+1);
+//        try {
+//            //URLEncode转码会将& ： / = 等一些特殊字符转码,(但是这个字符  只有在作为参数值  时需要转码;例如url中的&具有参数连接的作用，此时就不能被转码)
+//            String encode = URLEncoder.encode(temp, "utf-8");
+//            System.out.println(encode);
+//            encode = encode.replace("%3D",  "=");
+//            encode = encode.replace("%2F", "/");
+//            encode = encode.replace("+", "%20");
+//            encode = encode.replace("%26", "&");
+//            result += encode;
+//            //System.out.println("转码后的url:"+result);
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
+        return url;
     }
 }
 
@@ -146,6 +184,8 @@ public class NewsCollection {
     public int total;
     public List<News> data;
     public String currentPage;
+    @JsonIgnore
+    private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
 
     public NewsCollection(){
     }
@@ -159,6 +199,9 @@ public class NewsCollection {
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         try {
             NewsCollection newsCollection = mapper.readValue(json, NewsCollection.class);
+            for(News news:newsCollection.data){
+                news.publishDate = dateFormat.parse(news.publishTime);
+            }
             return newsCollection;
         }catch (Exception e){
             System.out.println(e.getClass());
@@ -167,21 +210,26 @@ public class NewsCollection {
     }
     public static NewsCollection Request2News(Request request){
         MyThread myThread = new MyThread(request.getUrl(),1);
-        myThread.run();
+        myThread.start();
         try {
             myThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        try {
+            for (News news : myThread.newsCollection.data) {
+                news.publishDate = dateFormat.parse(news.publishTime);
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println(myThread.newsCollection.data.size());
+
         return myThread.newsCollection;
     }
     public static void main(String[] args){
-        Request request = new Request();
-        //request.categories="经济";
-        request.words="特朗普";
-        request.endDate=new Date();
-        NewsCollection newsCollection = Request2News(request);
-        System.out.println(newsCollection.total);
-
+        Date startData = new Date(0);
+        Date endDate = new Date();
+        System.out.println(NewsCollection.Request2News(new Request(20,startData,endDate,null,null)).data.get(0).publishDate);
     }
 }

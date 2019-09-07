@@ -1,16 +1,16 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/matianyi/AndroidStudioProjects/NewsApp3/lib/build/intermediates/res/merged/release/values-iw/values-iw.xml",
+            "outputFile": "/Users/matianyi/Desktop/AndroidNewsApplication/lib/build/intermediates/res/merged/release/values-iw/values-iw.xml",
             "map": [
                 {
-                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/lib/src/main/res/values-iw/pull_refresh_strings.xml",
+                    "source": "/Users/matianyi/Desktop/AndroidNewsApplication/lib/src/main/res/values-iw/pull_refresh_strings.xml",
                     "from": {
                         "startLines": "2,4,3",
                         "startColumns": "2,2,2",
-                        "startOffsets": "55,192,122",
+                        "startOffsets": "53,188,119",
                         "endColumns": "65,64,68",
-                        "endOffsets": "118,254,188"
+                        "endOffsets": "116,250,185"
                     },
                     "to": {
                         "startLines": "2,3,4",
@@ -23,16 +23,16 @@
             ]
         },
         {
-            "outputFile": "/Users/matianyi/AndroidStudioProjects/NewsApp3/lib/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-iw/values-iw.xml",
+            "outputFile": "/Users/matianyi/Desktop/AndroidNewsApplication/lib/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-iw/values-iw.xml",
             "map": [
                 {
-                    "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/lib/src/main/res/values-iw/pull_refresh_strings.xml",
+                    "source": "/Users/matianyi/Desktop/AndroidNewsApplication/lib/src/main/res/values-iw/pull_refresh_strings.xml",
                     "from": {
                         "startLines": "2,4,3",
                         "startColumns": "2,2,2",
-                        "startOffsets": "55,192,122",
+                        "startOffsets": "53,188,119",
                         "endColumns": "65,64,68",
-                        "endOffsets": "118,254,188"
+                        "endOffsets": "116,250,185"
                     },
                     "to": {
                         "startLines": "2,3,4",

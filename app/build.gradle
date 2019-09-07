@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.mob.sdk'
 
 android {
     compileSdkVersion 28
@@ -15,6 +16,10 @@ android {
             annotationProcessorOptions {
                 includeCompileClasspath true
             }
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
         }
     }
 
@@ -36,7 +41,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':lib')
-
 }
 
 ext {
@@ -57,8 +61,30 @@ dependencies {
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: jacksonVersion
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.22'
+    compile 'com.github.bumptech.glide:glide:3.6.0'
+    compile 'com.githang:status-bar-compat:latest.integration'
+    compile 'com.carson_ho:SearchLayout:1.0.1'
 }
 
 dependencies {
     compile 'com.github.satyan:sugar:1.3'
+    implementation files('library/sun.misc.BASE64Decoder.jar')
+    implementation 'com.shuyu:GSYVideoPlayer:6.0.3'
+}
+MobSDK {
+    appKey "2c5799d59e6c8"
+    appSecret "107dc7ace014c6240d641cc3d5d7a897"
+
+    ShareSDK {
+        devInfo {
+            Wechat {
+                appId "wxc265ca73405bec07"
+                appSecret "d27f0157b1bf0307b1fdc612e1be5c17"
+            }
+        }
+
+    }
+}
+dependencies {
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }

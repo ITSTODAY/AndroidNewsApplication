@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/matianyi/AndroidStudioProjects/NewsApp3/lib/build/intermediates/res/merged/release/layout/pull_to_refresh_header_horizontal.xml",
-        "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/lib/src/main/res/layout/pull_to_refresh_header_horizontal.xml"
+        "merged": "/Users/matianyi/Desktop/AndroidNewsApplication/lib/build/intermediates/res/merged/release/layout/pull_to_refresh_header_vertical.xml",
+        "source": "/Users/matianyi/Desktop/AndroidNewsApplication/lib/src/main/res/layout/pull_to_refresh_header_vertical.xml"
     },
     {
-        "merged": "/Users/matianyi/AndroidStudioProjects/NewsApp3/lib/build/intermediates/res/merged/release/layout/pull_to_refresh_header_vertical.xml",
-        "source": "/Users/matianyi/AndroidStudioProjects/NewsApp3/lib/src/main/res/layout/pull_to_refresh_header_vertical.xml"
+        "merged": "/Users/matianyi/Desktop/AndroidNewsApplication/lib/build/intermediates/res/merged/release/layout/pull_to_refresh_header_horizontal.xml",
+        "source": "/Users/matianyi/Desktop/AndroidNewsApplication/lib/src/main/res/layout/pull_to_refresh_header_horizontal.xml"
     }
 ]

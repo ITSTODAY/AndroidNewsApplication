@@ -13,6 +13,7 @@ import android.os.IBinder;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -41,7 +42,7 @@ public class Myservice extends Service {
             List<Record> browseRecords = Record.find(Record.class, "User = ? and type = ?", String.valueOf(user.getId()), "browse");
             newsList.clear();
             for(Record record:browseRecords){
-                newsList.add(News.Json2News(record.newsID));
+                newsList.add(News.Json2News(record.newsID,1));
             }
             System.out.println(newsList.size());
             return new NewsCollection(newsList);
@@ -52,7 +53,7 @@ public class Myservice extends Service {
             newsId=news.newsID;
             Record record = new Record(user, "browse", newsId);
             record.save();
-            return news.save();
+            return news.save(number);
         }
         public boolean addFavorite(News news){
             news=newsList.get(0);
@@ -67,7 +68,7 @@ public class Myservice extends Service {
             return true;
         }
         public boolean SignIn(User user1){
-            List<User> users = User.find(User.class, "user_ID = ? and password = ?",user1.userID,user1.password);
+            List<User> users = User.find(User.class, "userID = ? and password = ?",user1.userID,user1.password);
             if(users.isEmpty()||users.size()>1)return false;
             user=users.get(0);
             System.out.println("Sign in successfully.");
@@ -82,6 +83,8 @@ public class Myservice extends Service {
 
     }
     public APIBinder myBinder;
+    NotificationManager notificationManager;
+    Notification.Builder localBuilder;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -92,14 +95,12 @@ public class Myservice extends Service {
     public void onCreate() {
         super.onCreate();
         myBinder = new APIBinder();
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification.Builder localBuilder = new Notification.Builder(this);
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        localBuilder = new Notification.Builder(this);
         localBuilder.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0));
         localBuilder.setAutoCancel(false);
         localBuilder.setSmallIcon(R.drawable.ic_launcher_foreground);
-        localBuilder.setTicker("Foreground service started");
-        localBuilder.setContentTitle("Socket 服务端");
-        localBuilder.setContentText("正在运行");
+        localBuilder.setTicker("最新新闻通知");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             // 第三个参数表示通知的重要程度，默认则只在通知栏闪烁一下
@@ -109,21 +110,34 @@ public class Myservice extends Service {
             localBuilder.setChannelId("AppTestNotificationId");
         }
 // 发出通知
-        notificationManager.notify(1, localBuilder.build());
-
-        User user = new User("yzh","1234");
-        myBinder.SignUp(user);
-        myBinder.SignIn(user);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-    //    Toast.makeText(this, "service started", Toast.LENGTH_LONG).show();
+        //    Toast.makeText(this, "service started", Toast.LENGTH_LONG).show();
         Request request = new Request();
-        request.categories="教育";
-        request.words="清华";
+        request.endDate=new Date();
+        request.startDate=new Date();
+        request.startDate.setDate(request.startDate.getDay()-1);
         myBinder.Request2News(request);
-        myBinder.addBrowse("111");
+        System.out.println("service get:"+newsList.size());
+        class Timer extends Thread{
+            @Override
+            public void run(){
+                try{
+                    for(News news:newsList){
+                        Thread.sleep(15000);
+                        localBuilder.setContentTitle(news.title);
+                        localBuilder.setContentText(news.content.substring(0,50)+"……");
+                        notificationManager.notify(1, localBuilder.build());
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        Timer timer = new Timer();
+        timer.start();
         Toast.makeText(getApplicationContext(),"0", Toast.LENGTH_SHORT).show();
         return START_STICKY;
     }
@@ -131,8 +145,6 @@ public class Myservice extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        myBinder.GetBrowseHistory();
-
         Toast.makeText(this, "Service Stopped", Toast.LENGTH_LONG).show();
     }
 
