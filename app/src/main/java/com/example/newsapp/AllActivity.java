@@ -1,8 +1,12 @@
 package com.example.newsapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Message;
@@ -14,18 +18,28 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 import com.example.newsapp.wxapi.WXEntryActivity;
 import com.githang.statusbar.StatusBarCompat;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.tencent.mm.opensdk.utils.Log;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 import cn.sharesdk.wechat.friends.Wechat;
 
@@ -53,6 +67,7 @@ public class AllActivity extends AppCompatActivity {
     private boolean isCollected;
     private Intent intent;
     private StandardGSYVideoPlayer player;
+    Bitmap bitmap = null;
 
     private void onDownLoad(String url) {
         DownLoadImageService service = new DownLoadImageService(getApplicationContext(),
@@ -106,9 +121,6 @@ public class AllActivity extends AppCompatActivity {
             image = null;
         }
         images = temp.split(",");
-        if(images.length>0){
-            onDownLoad(images[0]);
-        }
         adapterMain = new AllAdapter(images, content.split("\n\n"), mContext);
 
         titleV = (TextView) findViewById(R.id.title_all);
@@ -136,8 +148,6 @@ public class AllActivity extends AppCompatActivity {
         titleV.setText(title);
         companyV.setText(publisher);
 
-
-
         myView = (ListView) findViewById(R.id.all_the_content);
         adapterMain = new AllAdapter(images, content.split("\n\n"), mContext);
         myView.setAdapter(adapterMain);
@@ -162,41 +172,81 @@ public class AllActivity extends AppCompatActivity {
         sharing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final OnekeyShare oks = new OnekeyShare();
-                String platform = Wechat.NAME;
-                //指定分享的平台，如果为空，还是会调用九宫格的平台列表界面
-                if (platform != null) {
-                    oks.setPlatform(platform);
-                }
-                //关闭sso授权
-                //oks.disableSSOWhenAuthorize();
-                // text是分享文本，所有平台都需要这个字段
-                oks.setTitle(content.substring(0,30)+"……");
-                //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
-                if(images.length>0)
-                    oks.setImageUrl(images[0].replaceAll(" ",""));
-                // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
-                // url仅在微信（包括好友和朋友圈）中使用
-                //oks.setUrl("http://sharesdk.cn");
+//                ArrayList<Uri> uris = new ArrayList<>();
+//
+//                //Uri uri=ShareAnyWhereUtil.viewToUri(AllActivity.this,(View)findViewById(R.id.share_layout));
+////                findViewById(R.id.share_layout).setVisibility(View.VISIBLE);
+//                ImageView share_img = findViewById(R.id.share_image);
+////                TextView share_title = findViewById(R.id.share_title);
+////                TextView share_content = findViewById(R.id.share_content);
+////                TextView share_company = findViewById(R.id.share_company);
+////                share_title.setText(title);
+////                share_company.setText(publisher+" "+publishtime);
+////                share_content.setText(content);
+////                if(!images[0].equals("")){
+////                    share_img.setVisibility(View.VISIBLE);
+////                    Glide
+////                            .with(mContext)
+////                            .load(images[0].replaceAll(" ",""))
+////                            .placeholder(R.drawable.picture_loading)
+////                            //.skipMemoryCache(false)
+////                            .into((ImageView)share_img);
+////                    //uris.add(ShareAnyWhereUtil.viewToUri(AllActivity.this,findViewById(R.id.share_image)));
+////                }else{
+////                    share_img.setVisibility(View.GONE);
+////                }
+//
+//                //uris.add(AllActivity.this,)
 
-                oks.setCallback(new PlatformActionListener() {
-                    @Override
-                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                         Log.i("sss","onComplete");
-                    }
-
-                    @Override
-                    public void onError(Platform platform, int i, Throwable throwable) {
-
-                    }
-
-                    @Override
-                    public void onCancel(Platform platform, int i) {
-
-                    }
-                });
-                //启动分享
-                oks.show(AllActivity.this);
+//                Uri uri= Uri.parse(content);
+//                //uris.add(uri);
+//                uris.add(ShareAnyWhereUtil.bitmapToUri(AllActivity.this,bitmap));
+//                //uris.add(ShareAnyWhereUtil.viewToUri(AllActivity.this,share_img));
+//                //uris.add(uri);
+//                ShareAnyWhereUtil.shareWeichat(AllActivity.this,uris,"夏日气息新闻");
+//                findViewById(R.id.share_layout).setVisibility(View.GONE);
+//                final OnekeyShare oks = new OnekeyShare();
+//                String platform = Wechat.NAME;
+//                //指定分享的平台，如果为空，还是会调用九宫格的平台列表界面
+//                if (platform != null) {
+//                    oks.setPlatform(platform);
+//                }
+//                //关闭sso授权
+//                //oks.disableSSOWhenAuthorize();
+//                // text是分享文本，所有平台都需要这个字段
+//                oks.setTitle(content.substring(0,30)+"……");
+//                //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
+//                if(images.length>0)
+//                    oks.setImageUrl(images[0].replaceAll(" ",""));
+//                // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+//                // url仅在微信（包括好友和朋友圈）中使用
+//                //oks.setUrl("http://sharesdk.cn");
+//
+//                oks.setCallback(new PlatformActionListener() {
+//                    @Override
+//                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+//                         Log.i("sss","onComplete");
+//                    }
+//
+//                    @Override
+//                    public void onError(Platform platform, int i, Throwable throwable) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancel(Platform platform, int i) {
+//
+//                    }
+//                });
+//                //启动分享
+//                oks.show(AllActivity.this);
+                Platform.ShareParams params= new Platform.ShareParams();
+                params.setShareType(Platform.SHARE_WEBPAGE);
+                params.setText(content.substring(0,30)+"……");
+                params.setImageUrl(images[0].replaceAll(" ",""));
+                params.setUrl(images[0].replaceAll(" ",""));
+                Platform wechat = ShareSDK.getPlatform(Wechat.NAME);
+                wechat.share(params);
             }
         });
         //collect

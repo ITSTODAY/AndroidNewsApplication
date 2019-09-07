@@ -23,7 +23,7 @@ import java.util.function.Predicate;
 public class User extends SugarRecord<User> implements Serializable{
 
     @Ignore
-    private static String page="http://192.168.0.104:8080/service2_war_exploded/";
+    private static String page="http://183.172.198.49:8080/service2_war_exploded/";
 
     @Ignore
     private Integer userId;

@@ -14,7 +14,7 @@ import java.util.List;
 public class Record extends SugarRecord<Record> {
 
     @Ignore
-    private static String page="http://192.168.0.104:8080/service2_war_exploded/";
+    private static String page="http://183.172.198.49:8080/service2_war_exploded/";
 
     public int User;
 
@@ -116,7 +116,7 @@ public class Record extends SugarRecord<Record> {
 }
 class Preference{
     @Ignore
-    private static String page="http://192.168.0.104:8080/service2_war_exploded/";
+    private static String page="http://183.172.198.49:8080/service2_war_exploded/";
 
     public int User;
 
