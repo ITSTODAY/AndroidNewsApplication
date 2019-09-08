@@ -99,7 +99,7 @@ public class Myservice extends Service {
         localBuilder = new Notification.Builder(this);
         localBuilder.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0));
         localBuilder.setAutoCancel(false);
-        localBuilder.setSmallIcon(R.drawable.ic_launcher_foreground);
+        localBuilder.setSmallIcon(R.drawable.xinwenshenhedan);
         localBuilder.setTicker("最新新闻通知");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){

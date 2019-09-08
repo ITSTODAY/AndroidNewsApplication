@@ -51,7 +51,7 @@ public class MyThread extends Thread{
             System.out.println(result);
             URL url= new URL(result);
             URLConnection conn = url.openConnection();
-            conn.setConnectTimeout(10000);
+            conn.setConnectTimeout(5000);
             conn.setReadTimeout(10000);
             InputStreamReader is = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8);
             BufferedReader br = new BufferedReader(is);
@@ -133,8 +133,9 @@ public class MyThread extends Thread{
             }
         }catch (Exception e){
             System.out.println(e.getMessage());
-            newsCollection=new NewsCollection();
-            newsCollection.data=null;
+            newsCollection=null;
+//            newsCollection=new NewsCollection();
+//            newsCollection.data=null;
         }
     }
 }

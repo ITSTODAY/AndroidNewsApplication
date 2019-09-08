@@ -61,7 +61,9 @@ public class Page extends Fragment {
         //long l = System.currentTimeMillis();
         this.startData = new Date(0);
         this.endDate = new Date();
-        this.news = NewsCollection.Request2News(new Request(20, startData, endDate,null, type));
+        User usr = new User();
+        usr.setID(user);
+        this.news = usr.Request2News(new Request(20, startData, endDate,null, type));
         newsnumber = 20;
         //System.out.println("nnnnnnnnn"+this.news.total);
     }
@@ -85,7 +87,7 @@ public class Page extends Fragment {
         mPullRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> pullToRefreshBase) {
-                new DownToLoad(mPullRefreshListView, mAdapter, news, newsnumber, startData, endDate, type, keyword).execute();
+                new DownToLoad(mPullRefreshListView, mAdapter, news, newsnumber, startData, endDate, type, keyword, user).execute();
                 newsnumber = 20;
                 endDate = new Date();
                 //news = mAdapter.getNews();
@@ -93,7 +95,7 @@ public class Page extends Fragment {
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> pullToRefreshBase) {
-                new DownToLoad(mPullRefreshListView, mAdapter, news, newsnumber, startData, endDate, type, keyword).execute();
+                new DownToLoad(mPullRefreshListView, mAdapter, news, newsnumber, startData, endDate, type, keyword, user).execute();
                 newsnumber+=20;
                 //news = mAdapter.getNews();
             }

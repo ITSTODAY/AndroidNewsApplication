@@ -23,7 +23,7 @@ import java.util.function.Predicate;
 public class User extends SugarRecord<User> implements Serializable{
 
     @Ignore
-    private static String page="http://183.172.198.49:8080/service2_war_exploded/";
+    private static String page="http://183.173.137.234:8080/service2_war_exploded/";
 
     @Ignore
     private Integer userId;
@@ -96,7 +96,8 @@ public class User extends SugarRecord<User> implements Serializable{
         else return 1;
     }
     public NewsCollection Request2News(Request request){
-        request.words=request.words.replaceAll(" ","\\+");
+        if(request.words!=null)
+            request.words=request.words.replaceAll(" ","\\+");
         NewsCollection newsCollection = NewsCollection.Request2News(request);
         try {
             newsList = newsCollection.data;
@@ -107,20 +108,24 @@ public class User extends SugarRecord<User> implements Serializable{
         return newsCollection;
     }
     public void PurifyNews(NewsCollection newsCollection){
-        if(this.blockedWords.isEmpty()) {
+        if(this.blockedWords==null||this.blockedWords.isEmpty()) {
             blockedWords = new Record(this, "block", "").findAllNewsName();
+            System.out.println("blocked:"+blockedWords.size());
         }
         class filter implements Predicate<News>{
             @Override
             public boolean test(News news){
                 for(Keyword keyWords:news.keywords){
-                    if(blockedWords.contains(keyWords.word))return true;
+                    if(blockedWords.contains(keyWords.word)){
+                        System.out.println("blocked:"+keyWords.word);
+                        return true;
+                    }
                 }
                 return false;
             }
         }
         if(!this.blockedWords.isEmpty())
-            newsList.removeIf(new filter());
+            newsCollection.data.removeIf(new filter());
         newsCollection.total=newsList.size();
     }
     public void SavePreference(Keyword keyword){
@@ -136,6 +141,7 @@ public class User extends SugarRecord<User> implements Serializable{
     }
     public List<String> GetSearchHistory(){
         ArrayList<String> news = new Record(this,"search","").findAllNewsName();
+        if(news!=null)
         for(String word:news){
             word.replaceAll("\\+"," ");
         }
@@ -254,7 +260,7 @@ public class User extends SugarRecord<User> implements Serializable{
         Record record = new Record(this,"category","");
         List<String> res= record.findAllNewsName();
         String category;
-        if(!res.isEmpty())
+        if(res!=null&&!res.isEmpty())
             category = res.get(0);
         else
             category = "娱乐+军事+教育+文化+健康+财经+体育+汽车+科技+社会";

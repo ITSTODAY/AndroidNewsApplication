@@ -222,8 +222,9 @@ public class NewsCollection {
             }
         }catch (Exception e){
             System.out.println(e.getMessage());
+            myThread.newsCollection = new NewsCollection();
+            myThread.newsCollection.data = new ArrayList<>();
         }
-        System.out.println(myThread.newsCollection.data.size());
 
         return myThread.newsCollection;
     }

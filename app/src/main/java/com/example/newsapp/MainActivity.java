@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.view.menu.MenuView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity
     private int ID = -1;
     private int tag = 0;
     private String[] myCategory;
+    private boolean night = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,6 +191,16 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this,SettingActivity.class);
             intent.putExtra("ID",this.ID);
             startActivityForResult(intent,1);
+        }else if(id == R.id.Night){
+            if(!night){
+                night = true;
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                item.setIcon(R.drawable.yejianmoshi);
+            }else{
+                night = false;
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                item.setIcon(R.drawable.baitian_qing);
+            }
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

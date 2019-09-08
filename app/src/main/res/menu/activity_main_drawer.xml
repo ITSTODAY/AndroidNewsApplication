@@ -29,6 +29,10 @@
             android:id="@+id/Setting"
             android:icon="@drawable/setting"
             android:title="Setting"/>
+        <item
+            android:id="@+id/Night"
+            android:icon="@drawable/baitian_qing"
+            android:title="DayMode"/>
     </group>
 
     <item android:title="Categories">
